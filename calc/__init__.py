@@ -1,5 +1,9 @@
 """Tiny synthetic calculator for the OrchestraRunner landing sandbox."""
 
+from calc.gcd import gcd
+from calc.modulo import modulo
+from calc.power import power
+
 
 def add(a, b):
     return a + b
