@@ -1,6 +1,6 @@
 """Exponentiation for the calc package."""
 
-from calc.errors import CalcError  # noqa: F401  (raised once implemented)
+from calc.errors import CalcError
 
 
 def power(base, exponent):
@@ -10,4 +10,6 @@ def power(base, exponent):
     ``calc.errors.CalcError`` is raised. On valid input the result is
     ``base ** exponent``.
     """
-    raise NotImplementedError
+    if not isinstance(exponent, int) or exponent < 0:
+        raise CalcError("exponent must be a non-negative int")
+    return base ** exponent
