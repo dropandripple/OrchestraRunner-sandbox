@@ -1,6 +1,6 @@
 """Modulo operation for the calc package."""
 
-from calc.errors import CalcError  # noqa: F401  (part of the documented contract)
+from calc.errors import CalcError
 
 
 def modulo(a, b):
@@ -9,4 +9,6 @@ def modulo(a, b):
     Raises:
         CalcError: if ``b == 0``.
     """
-    raise NotImplementedError
+    if b == 0:
+        raise CalcError("modulo by zero")
+    return a % b
