@@ -1,5 +1,6 @@
 """Tiny synthetic calculator for the OrchestraRunner landing sandbox."""
 
+from calc.errors import CalcError
 from calc.gcd import gcd
 from calc.modulo import modulo
 from calc.power import power
@@ -10,7 +11,8 @@ def add(a, b):
 
 
 def divide(a, b):
-    # Division by zero is deliberately left unhandled (a seeded finding).
+    if b == 0:
+        raise CalcError("division by zero")
     return a / b
 
 
