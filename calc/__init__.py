@@ -8,3 +8,7 @@ def add(a, b):
 def divide(a, b):
     # Division by zero is deliberately left unhandled (a seeded finding).
     return a / b
+
+
+def subtract(a, b):
+    return a - b
