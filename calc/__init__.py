@@ -4,6 +4,7 @@ from calc.errors import CalcError
 from calc.gcd import gcd
 from calc.modulo import modulo
 from calc.power import power
+from calc.sign import sign
 
 
 def add(a, b):
