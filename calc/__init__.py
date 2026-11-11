@@ -1,5 +1,6 @@
 """Tiny synthetic calculator for the OrchestraRunner landing sandbox."""
 
+from calc.clamp import clamp
 from calc.errors import CalcError
 from calc.gcd import gcd
 from calc.modulo import modulo
