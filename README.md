@@ -12,7 +12,7 @@ Change for probe N6 (reviews required).
 
 ## Additional operations
 
-`power`, `modulo` and `gcd` are re-exported from the top-level `calc`
+The operations below are re-exported from the top-level `calc`
 package. Each raises `calc.errors.CalcError` on invalid input:
 
 - `power(base, exponent)` returns `base ** exponent`. Raises `CalcError` if
@@ -21,3 +21,13 @@ package. Each raises `calc.errors.CalcError` on invalid input:
 - `gcd(a, b)` returns the non-negative greatest common divisor. Raises
   `CalcError` if either argument is not an `int`, or if both are `0`. Bool
   inputs are accepted as the ints 0 and 1.
+- `mean(values)` returns the arithmetic mean. Any finite iterable is accepted,
+  except str/bytes/bytearray/memoryview/mappings. Elements must be finite int/float
+  numbers; bools count as 0/1. Raises `CalcError` for empty, non-numeric,
+  non-finite or out-of-range input. These input rules apply to all four statistics.
+- `median(values)` returns the middle value in sorted order; for even-length
+  input, it returns the mean of the two middle values.
+- `variance(values)` returns the population variance (divide by n); a singleton
+  gives 0.
+- `summary(values)` returns a fresh dict with exactly the keys `mean`, `median`
+  and `variance`, consuming the input once and applying the same input rules.

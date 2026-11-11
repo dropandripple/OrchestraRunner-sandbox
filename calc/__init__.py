@@ -6,6 +6,8 @@ from calc.gcd import gcd
 from calc.modulo import modulo
 from calc.power import power
 from calc.sign import sign
+from calc.stats import mean, median, variance
+from calc.summary import summary
 
 
 def add(a, b):
