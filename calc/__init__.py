@@ -3,6 +3,7 @@
 from calc.clamp import clamp
 from calc.errors import CalcError
 from calc.gcd import gcd
+from calc.geometry import circle_area, rectangle_area, total_area, triangle_area
 from calc.modulo import modulo
 from calc.power import power
 from calc.sign import sign

@@ -7,6 +7,36 @@ from calc import gcd, modulo, power
 
 
 class CalcIntegrationTest(unittest.TestCase):
+    def test_geometry_exports_are_the_submodule_functions(self):
+        import calc
+        from calc import geometry
+
+        for name in ("circle_area", "rectangle_area", "triangle_area", "total_area"):
+            with self.subTest(name=name):
+                self.assertIs(getattr(calc, name), getattr(geometry, name))
+
+    def test_geometry_operations_via_package(self):
+        import math
+
+        from calc import circle_area, rectangle_area, total_area, triangle_area
+        from calc.errors import CalcError
+
+        self.assertAlmostEqual(circle_area(2), 4 * math.pi)
+        self.assertEqual(rectangle_area(2, 3), 6)
+        self.assertEqual(triangle_area(3, 4), 6)
+        self.assertAlmostEqual(
+            total_area([("circle", (1,)), ("rectangle", (2, 3)), ("triangle", (3, 4))]),
+            math.pi + 12,
+        )
+        self.assertEqual(total_area([]), 0)
+        for function, args in (
+            (circle_area, (-1,)), (rectangle_area, (0, float("inf"))),
+            (triangle_area, (None, 0)), (total_area, (("circle", (1,)),)),
+        ):
+            with self.subTest(function=function.__name__, args=args):
+                with self.assertRaises(CalcError):
+                    function(*args)
+
     def test_power_modulo_gcd_via_package(self):
         # gcd(48, 18) == 6; 6 % 4 == 2; 2 ** 2 == 4
         self.assertEqual(power(modulo(gcd(48, 18), 4), 2), 4)

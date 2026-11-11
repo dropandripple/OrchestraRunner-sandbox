@@ -31,3 +31,14 @@ package. Each raises `calc.errors.CalcError` on invalid input:
   gives 0.
 - `summary(values)` returns a fresh dict with exactly the keys `mean`, `median`
   and `variance`, consuming the input once and applying the same input rules.
+- `circle_area(r)` returns the circle area, pi times the radius squared, as a float.
+  Geometry dimensions must be finite, non-negative int or float numbers, including
+  zero; bools count as 0/1.
+- `rectangle_area(w, h)` returns width times height, preserving exact int products.
+- `triangle_area(base, height)` returns base times height divided by 2 as a float.
+- `total_area(shapes)` sums a list of `(kind, args)` pairs: `circle` takes 1 argument,
+  `rectangle` takes 2 arguments, and `triangle` takes 2 arguments.
+  `total_area([])` returns 0. For example,
+  `total_area([('circle', (1,)), ('rectangle', (2, 3)), ('triangle', (3, 4))])`
+  returns approximately 15.14159. Invalid dimensions, malformed entries, unknown
+  kinds, wrong argument counts, non-list inputs and overflow raise `CalcError`.
